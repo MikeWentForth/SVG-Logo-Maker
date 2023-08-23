@@ -1,6 +1,7 @@
-const inquirer = require('inquirer');
-
-const fs = require('fs');
+// const inquirer = require('inquirer');
+import inquirer from "inquirer"
+import fs from "fs"
+import triangle from "./lib/triangle.js"
 
 //Enter in the list of questions
 
@@ -43,7 +44,7 @@ function writeToFile(fileName, data) {
       console.error(err);
     }
   });
-  
+
 
 }
 
@@ -53,9 +54,34 @@ function init() {
   inquirer
     .prompt(questions)
 
-    .then((answers) => {})
+    .then((answers) => {
+      let svg = `<svg version="1.1"
+      width="300" height="200"
+      xmlns="http://www.w3.org/2000/svg">\n`
 
-//write the SVG file
+      // Customize the svg data based on the answers...
+      // Add a triangle, circle or square with a color
+      let shape = null;
+      if (answers.logoShape == "triangle") {
+        shape = new Triangle();
+      } // add options for other shapes XXXXXXX
+
+      // Set the shape's color
+      shape.setColor(answers.logoShapeColor)
+
+      // Call render to get the svg code
+      svg += shape.render()
+
+      // Add text with a color XXXXXXXXXX
+
+
+
+      svg += "</svg>"
+
+      writeToFile('logo.svg', svg)
+
+    })
+
 }
 
 init()
