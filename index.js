@@ -41,15 +41,13 @@ const questions = [
 //this function writes the logo.svg file//
 
 function writeToFile(fileName, data) {
-
   // Write the file...
-  fs.writeFile(fileName, data, err => {
-    if (err) {
-      console.error(err);
-    }
-    else {
+  fs.writeFile(fileName, data)
+  .then(() => {
       console.log("Generated logo.svg");
-    }
+  })
+  .catch((error) => {
+    console.log(error);
   });
 
 
@@ -71,17 +69,16 @@ function init() {
       // Add a triangle, circle or square with a color
       let shape = null;
       if (answers.logoShape == "triangle") {
-        shape = new Triangle();
+        shape = new Triangle(answers.logoShapeColor);
       }
       else if (answers.logoShape == "circle") {
-        shape = new Circle();
+        shape = new Circle(answers.logoShapeColor);
       }
       else if (answers.logoShape == "square") {
-        shape = new Square();
+        shape = new Square(answers.logoShapeColor);
       }
 
       // Set the shape's color new Circle
-      shape.setColor(answers.logoShapeColor)
 
       // Call render to get the svg code
       svg += shape.render()
@@ -91,8 +88,11 @@ function init() {
 
       svg += "</svg>"
 
-      writeToFile('./examples/logo.svg', svg)
+      
+      return svg;
 
+    }).then((svg) => {
+      writeToFile('./examples/logo.svg', svg)
     })
 
 }
