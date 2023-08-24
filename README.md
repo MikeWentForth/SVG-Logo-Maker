@@ -12,7 +12,7 @@ Javascript, Node JS, JSON, Inquirer, JEST
 
 For more information about the services that I offer, please contact me at themikewallace@gmail.com.
 
-## See Google Drive Link Below ##
+## See Google Drive Link Below for video tutorial ##
 
 [
 ](https://drive.google.com/file/d/1ofju7XCwJe7s7qiu3iupmGTjKVg2GGjC/view)https://drive.google.com/file/d/1ofju7XCwJe7s7qiu3iupmGTjKVg2GGjC/view
