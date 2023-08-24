@@ -1,6 +1,13 @@
 {
-  "type": "module",
+  "name": "svg-logo-maker",
+  "main": "index.js",
   "dependencies": {
-    "inquirer": "^9.2.10"
+    "inquirer": "^8.2.04"
+  },
+  "devDependencies": {
+    "jest": "^29.6.3"
+  },
+  "scripts": {
+    "test": "jest"
   }
 }

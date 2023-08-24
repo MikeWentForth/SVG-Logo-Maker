@@ -1,7 +1,11 @@
-// const inquirer = require('inquirer');
-import inquirer from "inquirer"
-import fs from "fs"
-import triangle from "./lib/triangle.js"
+const inquirer = require('inquirer');
+
+
+const fs = require('fs/promises')
+const Triangle = require('./lib/triangle.js')
+const Square = require('./lib/square.js')
+const Circle = require('./lib/circle.js')
+
 
 //Enter in the list of questions
 
@@ -43,7 +47,11 @@ function writeToFile(fileName, data) {
     if (err) {
       console.error(err);
     }
+    else {
+      console.log("Generated logo.svg");
+    }
   });
+
 
 
 }
@@ -64,48 +72,32 @@ function init() {
       let shape = null;
       if (answers.logoShape == "triangle") {
         shape = new Triangle();
-      } // add options for other shapes XXXXXXX
+      }
+      else if (answers.logoShape == "circle") {
+        shape = new Circle();
+      }
+      else if (answers.logoShape == "square") {
+        shape = new Square();
+      }
 
-      // Set the shape's color
+      // Set the shape's color new Circle
       shape.setColor(answers.logoShapeColor)
 
       // Call render to get the svg code
       svg += shape.render()
 
-      // Add text with a color XXXXXXXXXX
-
-
+      // Add text with a color 
+      svg += `\n<text x="150" y="120" font-size="60" dominant-bassline="middle" text-anchor="middle" fill="${answers.logoColor}">${answers.logoInitials}</text>\n`
 
       svg += "</svg>"
 
-      writeToFile('logo.svg', svg)
+      writeToFile('./examples/logo.svg', svg)
 
     })
 
 }
 
 init()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
