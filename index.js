@@ -84,7 +84,7 @@ function init() {
       svg += shape.render()
 
       // Add text with a color 
-      svg += `\n<text x="150" y="120" font-size="60" dominant-bassline="middle" text-anchor="middle" fill="${answers.logoColor}">${answers.logoInitials}</text>\n`
+      svg += `\n<text x="150" y="120" font-size="40" dominant-bassline="middle" text-anchor="middle" fill="${answers.logoColor}">${answers.logoInitials}</text>\n`
 
       svg += "</svg>"
 
